@@ -2,7 +2,9 @@
 # FaceTron MCP Server
 FaceTron is a high-performance, modular face(recognition) embedding server with ONNX Runtime support, featuring dynamic multi-model loading, take your models offline, built to run anywhere, from local machines to scalable cloud environments. 
 It also provides an OpenAPI Specification (OAS) endpoint with MCP-compatible metadata, and with OpenTelemetry integration. 
-Added lightweight ONNX models under the models/ directory for testing purposes. Replace or mount this directory with actual high-resolution face models such as 1k3d68, 2d106det, arcface, buffalo, genderage, glintr100, and scrfd_10g_bnkps for full functionality.
+
+_Added lightweight ONNX models under the models/ directory for testing purposes. Replace or mount this directory with actual high-resolution face models such as **1k3d68, 2d106det, arcface, buffalo, genderage, glintr100, and scrfd_10g_bnkps** for full functionality._
+
 ---
 
 ## 🚀 Features
@@ -110,8 +112,10 @@ Disable Telemetry: Set the environment variable DISABLE_OTEL=true before startin
 ### Create `.env`
 
 ```env
-PORT=8000
-MODEL_DIR=/models
+MODEL_DIR=models
+LOG_LEVEL=info
+OTEL_EXPORTER_OTLP_ENDPOINT=http://host.docker.internal:4317
+DISABLE_OTEL=false
 ```
 
 ### Option 1: Start server using docker
