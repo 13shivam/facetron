@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  mcp-backend:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+    environment:
+      - MODEL_DIR=models
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
+    depends_on:
+      - jaeger
+    networks:
+      - face-detection-network
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "6831:6831/udp"    # Jaeger Thrift compact protocol used by most clients
+      - "16686:16686"      # Jaeger UI
+      - "14250:14250"      # Used by Jaeger gRPC
+      - "14268:14268"      # Can accept spans in Jaeger Thrift format
+      - "4317:4317"        # OTLP gRPC endpoint
+      - "4318:4318"        # OTLP HTTP endpoint
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
+      - COLLECTOR_OTLP_ENABLED=true
+    networks:
+      - face-detection-network
+
+networks:
+  face-detection-network:
+    driver: bridge

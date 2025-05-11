@@ -1,0 +1,25 @@
+fastapi~=0.115.12
+uvicorn[standard]~=0.34.2
+pydantic~=2.11.4
+onnxruntime~=1.19.2
+python-dotenv~=1.1.0
+opencv-python~=4.11.0.86
+prometheus-fastapi-instrumentator
+Pillow~=11.2.1
+python-multipart
+starlette_exporter
+dotenv~=0.9.9
+numpy~=2.0.2
+requests~=2.32.3
+prometheus-client~=0.21.1
+openpyxl
+
+
+
+# OpenTelemetry packages
+opentelemetry-api>=1.11.1
+opentelemetry-sdk>=1.11.1
+opentelemetry-exporter-otlp>=1.11.1
+opentelemetry-instrumentation-fastapi>=0.30b1
+opentelemetry-instrumentation-asyncio>=0.30b1
+grpcio>=1.44.0  # For OTLP gRPC exporter
